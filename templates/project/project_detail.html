@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+{{ project.title }} | Oyewole Olamilekan Usman
+{% endblock %}
+
+
+{% block content %}
+
+<section class="project-detail-section">
+
+    <div class="container">
+
+
+        <!-- Back -->
+
+        <a
+            href="{% url 'projects:project_list' %}"
+            class="project-back"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Projects
+
+        </a>
+
+
+
+        <!-- Header -->
+
+        <div class="project-detail-header">
+
+            {% if project.category %}
+
+                <span class="section-label">
+                    {{ project.category }}
+                </span>
+
+            {% endif %}
+
+
+            <h1>
+                {{ project.title }}
+            </h1>
+
+
+            <p>
+                {{ project.description }}
+            </p>
+
+        </div>
+
+
+
+        <!-- Project Image -->
+
+        {% if project.image %}
+
+            <div class="project-detail-image">
+
+                <img
+                    src="{{ project.image.url }}"
+                    alt="{{ project.title }}"
+                >
+
+            </div>
+
+        {% endif %}
+
+
+
+        <!-- Project Information -->
+
+        <div class="project-detail-grid">
+
+
+            <!-- Main Content -->
+
+            <div class="project-detail-main">
+
+                <h2>
+                    Project Overview
+                </h2>
+
+                <p>
+                    {{ project.description }}
+                </p>
+
+
+                <h2>
+                    Technologies Used
+                </h2>
+
+                {% if project.technologies %}
+
+                    <div class="detail-technologies">
+
+
+                        <span>
+                            {{ project.technologies }}
+                        </span>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+
+            <!-- Project Sidebar -->
+
+            <aside class="project-detail-sidebar">
+
+
+                {% if project.github_url %}
+
+                    <a
+                        href="{{ project.github_url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="detail-button github-button"
+                    >
+
+                        <i class="fa-brands fa-github"></i>
+
+                        GitHub Repository
+
+                    </a>
+
+                {% endif %}
+
+
+
+                {% if project.live_url %}
+
+                    <a
+                        href="{{ project.live_url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="detail-button live-button"
+                    >
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        Live Dashboard
+
+                    </a>
+
+                {% endif %}
+
+
+            </aside>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,1160 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+    Oyewole Olamilekan Usman | Data Analyst & Python Developer
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-container">
+
+
+        <!-- Hero Text -->
+
+        <div class="hero-content reveal">
+
+            <div class="hero-badge">
+
+                <span></span>
+
+                Available for freelance & career opportunities
+
+            </div>
+
+
+            <h1>
+
+                Turning Data Into
+                <span>Business Decisions.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                I'm <strong>Oyewole Olamilekan Usman</strong>,
+                a Data Analyst, Python Developer and Business
+                Intelligence professional who builds data-driven
+                solutions that help businesses understand their
+                data, automate processes and make better decisions.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'projects:project_list' %}"
+                   class="btn btn-primary">
+
+                    View My Projects
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+                <a href="#contact"
+                   class="btn btn-outline">
+
+                    Let's Connect
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+
+                    <strong>10+</strong>
+
+                    <span>Projects Built</span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>5+</strong>
+
+                    <span>Core Technologies</span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>100%</strong>
+
+                    <span>Problem Solving</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Code Visual -->
+
+        <div class="hero-visual reveal">
+
+            <div class="code-card">
+
+                <div class="code-header">
+
+                    <span class="code-dot"></span>
+                    <span class="code-dot"></span>
+                    <span class="code-dot"></span>
+
+                    <span class="code-title">
+                        analytics.py
+                    </span>
+
+                </div>
+
+
+                <div class="code-body">
+
+                    <div>
+                        <span class="code-keyword">
+                            import
+                        </span>
+
+                        pandas
+                        <span class="code-keyword">
+                            as
+                        </span>
+                        pd
+                    </div>
+
+
+                    <div>
+                        <span class="code-keyword">
+                            import
+                        </span>
+
+                        numpy
+                        <span class="code-keyword">
+                            as
+                        </span>
+                        np
+                    </div>
+
+
+                    <br>
+
+
+                    <div>
+                        data =
+                        pd.read_csv(
+                        <span class="code-string">
+                            "business_data.csv"
+                        </span>
+                        )
+                    </div>
+
+
+                    <div>
+                        insights =
+                        data.groupby(
+                        <span class="code-string">
+                            "category"
+                        </span>
+                        )
+                    </div>
+
+
+                    <div>
+                        insights.sum()
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="code-comment">
+                        # Transform data into
+                        actionable insights
+                    </div>
+
+
+                    <div>
+                        <span class="code-keyword">
+                            return
+                        </span>
+
+                        insights
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="about-section" id="about">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                About Me
+            </span>
+
+            <h2 class="section-title">
+                Data, Technology & Business.
+            </h2>
+
+            <p class="section-description">
+
+                I combine business knowledge with technology
+                to solve practical problems using data.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <div class="about-image reveal">
+
+                <!--
+                    Replace this image later with your
+                    professional photograph.
+                -->
+
+                <img src="{% static 'image/profile.jpeg' %}"
+                     alt="Oyewole Olamilekan Usman">
+
+            </div>
+
+
+            <div class="about-content reveal">
+
+                <div class="about-facts">
+
+                    <div class="about-fact">
+
+                        <span class="about-fact-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </span>
+
+                        <div>
+                            <strong>Business Administration</strong>
+                            <span>Academic Background</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-fact">
+
+                        <span class="about-fact-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </span>
+
+                        <div>
+                            <strong>Data Analytics</strong>
+                            <span>Business Insights</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-fact">
+
+                        <span class="about-fact-icon">
+                            <i class="fa-brands fa-python"></i>
+                        </span>
+
+                        <div>
+                            <strong>Python Development</strong>
+                            <span>Applications & Automation</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-fact">
+
+                        <span class="about-fact-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </span>
+
+                        <div>
+                            <strong>Machine Learning</strong>
+                            <span>Predictive Solutions</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <h3>
+                    I build solutions that make data useful.
+                </h3>
+
+
+                <p>
+
+                    My background in Business Administration 
+                    gives me a strong understanding of how 
+                    businesses operate, while my Data Science 
+                    and Python development skills allow me to 
+                    turn business problems into practical, 
+                    data-driven solutions.
+
+                </p>
+
+
+                <p>
+
+                    I work with Python, Pandas, NumPy,
+                    SQL, data visualization, machine learning,
+                    Streamlit and Django to analyze information,
+                    build applications and communicate insights.
+
+                </p>
+
+
+                <ul class="about-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Data Analysis
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Business Intelligence
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Python Development
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Machine Learning
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Data Visualization
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Business Automation
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SKILLS / TECHNOLOGY STACK
+===================================================== -->
+
+<section class="skills-section" id="skills">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                My Toolkit
+            </span>
+
+            <h2 class="section-title">
+                Technologies I Use To Build Solutions.
+            </h2>
+
+            <p class="section-description">
+                A practical combination of data analytics, business
+                intelligence, machine learning and Python development
+                tools.
+            </p>
+
+        </div>
+
+
+        <div class="skills-categories">
+
+
+            <!-- =========================================
+                 DATA ANALYTICS
+            ========================================== -->
+
+            <div class="skill-category reveal">
+
+                <div class="skill-category-header">
+
+                    <div class="skill-category-icon">
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
+
+                    <div>
+                        <h3>Data & Analytics</h3>
+
+                        <p>
+                            Turning raw data into useful information
+                            and business insights.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="technology-list">
+
+                    <div class="technology">
+                        <i class="fa-brands fa-python"></i>
+                        <span>Python</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-table"></i>
+                        <span>Pandas</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>NumPy</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-database"></i>
+                        <span>SQL</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 VISUALIZATION & BI
+            ========================================== -->
+
+            <div class="skill-category reveal">
+
+                <div class="skill-category-header">
+
+                    <div class="skill-category-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+                        <h3>Visualization & BI</h3>
+
+                        <p>
+                            Communicating data through dashboards,
+                            reports and visual storytelling.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="technology-list">
+
+                    <div class="technology">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Power BI</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-chart-area"></i>
+                        <span>Plotly</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Matplotlib</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-table-columns"></i>
+                        <span>Streamlit</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 MACHINE LEARNING
+            ========================================== -->
+
+            <div class="skill-category reveal">
+
+                <div class="skill-category-header">
+
+                    <div class="skill-category-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+
+                    <div>
+                        <h3>Machine Learning</h3>
+
+                        <p>
+                            Building predictive models and evaluating
+                            data-driven solutions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="technology-list">
+
+                    <div class="technology">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>Scikit-learn</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-tree"></i>
+                        <span>CatBoost</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>XGBoost</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-solid fa-gears"></i>
+                        <span>Feature Engineering</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 DEVELOPMENT
+            ========================================== -->
+
+            <div class="skill-category reveal">
+
+                <div class="skill-category-header">
+
+                    <div class="skill-category-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+
+                    <div>
+                        <h3>Development</h3>
+
+                        <p>
+                            Building Python-powered applications,
+                            websites and backend systems.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="technology-list">
+
+                    <div class="technology">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Django</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-brands fa-html5"></i>
+                        <span>HTML</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <span>CSS</span>
+                    </div>
+
+                    <div class="technology">
+                        <i class="fa-brands fa-github"></i>
+                        <span>Git & GitHub</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================================
+             CORE STRENGTHS
+        ========================================== -->
+
+        <div class="skills-strengths reveal">
+
+            <div class="strength-title">
+
+                <span class="section-label">
+                    Core Strengths
+                </span>
+
+                <h3>
+                    What I Bring Beyond The Tools.
+                </h3>
+
+            </div>
+
+
+            <div class="strength-list">
+
+                <div class="strength-item">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    <span>
+                        Business-focused problem solving
+                    </span>
+
+                </div>
+
+
+                <div class="strength-item">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    <span>
+                        Data cleaning & preparation
+                    </span>
+
+                </div>
+
+
+                <div class="strength-item">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    <span>
+                        Interactive dashboard development
+                    </span>
+
+                </div>
+
+
+                <div class="strength-item">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    <span>
+                        Data storytelling & visualization
+                    </span>
+
+                </div>
+
+
+                <div class="strength-item">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    <span>
+                        Machine learning model development
+                    </span>
+
+                </div>
+
+
+                <div class="strength-item">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    <span>
+                        Python application development
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="services-section" id="services">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                What I Do
+            </span>
+
+            <h2 class="section-title">
+                How I Can Help Your Business.
+            </h2>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <div class="service-card reveal">
+
+                <div class="service-number">
+                    01 — DATA
+                </div>
+
+                <h3>
+                    Data Analysis
+                </h3>
+
+                <p>
+
+                    Clean, analyze and transform raw business
+                    data into meaningful insights that support
+                    better decisions.
+
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-number">
+                    02 — BI
+                </div>
+
+                <h3>
+                    Business Intelligence
+                </h3>
+
+                <p>
+
+                    Build reports, dashboards and visualizations
+                    that help organizations monitor performance
+                    and understand their business.
+
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-number">
+                    03 — PYTHON
+                </div>
+
+                <h3>
+                    Python Development
+                </h3>
+
+                <p>
+
+                    Build Python-powered applications,
+                    automation tools and data-driven systems
+                    using Django and Streamlit.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SELECTED WORK / PROJECTS
+===================================================== -->
+
+<section class="projects-section" id="projects">
+
+    <div class="container">
+
+        <!-- Section Heading -->
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                Selected Work
+            </span>
+
+            <h2 class="section-title">
+                Projects Built To Solve Real Problems.
+            </h2>
+
+            <p class="section-description">
+                A selection of data analytics, machine learning,
+                business intelligence and Python development projects
+                I've worked on.
+            </p>
+
+        </div>
+
+
+        <!-- Projects -->
+
+        {% if all_projects %}
+
+            <div class="featured-projects">
+
+                {% for project in all_projects|slice:":3" %}
+
+                    <article class="project-card reveal">
+
+
+                        <!-- Project Image -->
+
+                        <div class="project-image">
+
+                            {% if project.image %}
+
+                                <img
+                                    src="{{ project.image.url }}"
+                                    alt="{{ project.title }}"
+                                >
+
+                            {% else %}
+
+                                <div class="project-image-placeholder">
+
+                                    <i class="fa-solid fa-chart-line"></i>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <!-- Project Category -->
+
+                            <span class="project-badge">
+                                 Data & Technology
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- Project Content -->
+
+                        <div class="project-content">
+
+                            <h3>
+                                {{ project.title }}
+                            </h3>
+
+
+                            <p>
+                                {{ project.description }}
+                            </p>
+
+
+                            <!-- Technologies -->
+
+                            <div class="project-tech">
+
+                                <span>Python</span>
+                                <span>Data</span>
+                                <span>Analytics</span>
+
+                            </div>
+
+
+                            <!-- Project Actions -->
+
+                            <div class="project-actions">
+
+                                <a
+                                    href="{% url 'projects:project_detail'  project.pk %}"
+                                    class="project-link"
+                                >
+
+                                    View Project
+
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- View All Projects -->
+
+            <div class="projects-more reveal">
+
+                <a
+                    href="{% url 'projects:project_list' %}"
+                    class="btn-secondary"
+                >
+
+                    View All Projects
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+        {% else %}
+
+            <!-- No Projects -->
+
+            <div class="no-projects reveal">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <h3>
+                    Projects Coming Soon
+                </h3>
+
+                <p>
+                    I'm currently adding projects to my portfolio.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+
+            <div class="contact-info reveal">
+
+                <span class="section-label">
+                    Get In Touch
+                </span>
+
+                <h3>
+                    Let's build something useful.
+                </h3>
+
+                <p>
+
+                    Whether you need help understanding your
+                    data, building a dashboard, automating a
+                    process or developing a Python application,
+                    I'd be happy to discuss your project.
+
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>Email</strong>
+
+                        <span>
+                            eidowu1992@gmail.com
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fa-brands fa-linkedin"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>LinkedIn</strong>
+
+                        <span>
+                            Connect with me professionally
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fa-brands fa-github"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>GitHub</strong>
+
+                        <span>
+                            Explore my projects
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-form reveal">
+
+                <form>
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            class="form-control"
+                            placeholder="John Doe"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="john@example.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Tell Me About Your Project
+                        </label>
+
+                        <textarea
+                            id="message"
+                            class="form-control"
+                            placeholder="I'd like to discuss..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Send Message
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock content %}

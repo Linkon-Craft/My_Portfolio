@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Add Project | Portfolio
+{% endblock title %}
+
+
+{% block content %}
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>PORTFOLIO ADMIN</span>
+
+            <h2>
+                Add New <span>Project</span>
+            </h2>
+
+        </div>
+
+
+        <div class="contact-box">
+
+            <form method="POST"  action="{% url 'projects:add_project' %}" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    Add Project
+
+                    <i class="fas fa-plus"></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}
