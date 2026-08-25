@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
 
@@ -5,8 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
        MOBILE NAVIGATION
     ===================================================== */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navbar = document.querySelector(".navbar");
+    const menuToggle =
+        document.getElementById("mobileMenuToggle");
+
+    const navbar =
+        document.getElementById("navbar");
+
 
     if (menuToggle && navbar) {
 
@@ -14,30 +19,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
             navbar.classList.toggle("active");
 
-            const icon = menuToggle.querySelector("i");
+            menuToggle.classList.toggle("active");
+
+
+            const icon =
+                menuToggle.querySelector("i");
+
 
             if (navbar.classList.contains("active")) {
 
                 if (icon) {
+
                     icon.classList.remove("fa-bars");
+
                     icon.classList.add("fa-xmark");
+
                 }
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Close navigation"
+                );
 
             } else {
 
                 if (icon) {
+
                     icon.classList.remove("fa-xmark");
+
                     icon.classList.add("fa-bars");
+
                 }
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
 
             }
 
         });
 
 
-        /* Close menu after clicking a link */
+        /* Close mobile menu after clicking a link */
 
-        const navLinks = navbar.querySelectorAll("a");
+        const navLinks =
+            navbar.querySelectorAll("a");
+
 
         navLinks.forEach(function (link) {
 
@@ -45,12 +73,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 navbar.classList.remove("active");
 
-                const icon = menuToggle.querySelector("i");
+                menuToggle.classList.remove("active");
+
+
+                const icon =
+                    menuToggle.querySelector("i");
+
 
                 if (icon) {
+
                     icon.classList.remove("fa-xmark");
+
                     icon.classList.add("fa-bars");
+
                 }
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
 
             });
 
@@ -64,11 +105,16 @@ document.addEventListener("DOMContentLoaded", function () {
        HEADER SCROLL EFFECT
     ===================================================== */
 
-    const header = document.querySelector(".site-header");
+    const header =
+        document.querySelector(".site-header");
+
 
     function updateHeader() {
 
-        if (!header) return;
+        if (!header) {
+            return;
+        }
+
 
         if (window.scrollY > 30) {
 
@@ -82,7 +128,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    window.addEventListener("scroll", updateHeader);
+
+    window.addEventListener(
+        "scroll",
+        updateHeader
+    );
+
 
     updateHeader();
 
@@ -96,38 +147,36 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".reveal");
 
 
-    /*
-
-       If IntersectionObserver is supported,
-       animate elements when they enter the screen.
-
-    */
-
     if ("IntersectionObserver" in window) {
 
-        const observer = new IntersectionObserver(
+        const observer =
+            new IntersectionObserver(
 
-            function (entries, observer) {
+                function (entries, observer) {
 
-                entries.forEach(function (entry) {
+                    entries.forEach(function (entry) {
 
-                    if (entry.isIntersecting) {
+                        if (entry.isIntersecting) {
 
-                        entry.target.classList.add("active");
+                            entry.target.classList.add(
+                                "active"
+                            );
 
-                        observer.unobserve(entry.target);
+                            observer.unobserve(
+                                entry.target
+                            );
 
-                    }
+                        }
 
-                });
+                    });
 
-            },
+                },
 
-            {
-                threshold: 0.10
-            }
+                {
+                    threshold: 0.10
+                }
 
-        );
+            );
 
 
         revealElements.forEach(function (element) {
@@ -137,13 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     } else {
-
-        /*
-
-           Fallback for browsers without
-           IntersectionObserver.
-
-        */
 
         revealElements.forEach(function (element) {
 
@@ -160,42 +202,52 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     const anchorLinks =
-        document.querySelectorAll('a[href^="#"]');
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
 
 
     anchorLinks.forEach(function (link) {
 
-        link.addEventListener("click", function (event) {
+        link.addEventListener(
+            "click",
+            function (event) {
 
-            const targetId =
-                this.getAttribute("href");
+                const targetId =
+                    this.getAttribute("href");
 
 
-            if (!targetId || targetId === "#") {
-                return;
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (target) {
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+
+                        behavior: "smooth",
+
+                        block: "start"
+
+                    });
+
+                }
+
             }
-
-
-            const target =
-                document.querySelector(targetId);
-
-
-            if (target) {
-
-                event.preventDefault();
-
-
-                target.scrollIntoView({
-
-                    behavior: "smooth",
-
-                    block: "start"
-
-                });
-
-            }
-
-        });
+        );
 
     });
 
@@ -206,7 +258,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     const yearElement =
-        document.querySelector("[data-current-year]");
+        document.querySelector(
+            "[data-current-year]"
+        );
 
 
     if (yearElement) {
@@ -217,3 +271,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+/* =====================================================
+   REVIEW STAR RATING
+===================================================== */
+
+const starRating = document.querySelector("#starRating");
+
+if (starRating) {
+
+    const stars = starRating.querySelectorAll(
+        'input[name="star_rating"]'
+    );
+
+    const ratingInput = document.querySelector(
+        "#id_rating"
+    );
+
+
+    stars.forEach(function (star) {
+
+        star.addEventListener("change", function () {
+
+            if (ratingInput) {
+
+                ratingInput.value = this.value;
+
+            }
+
+        });
+
+    });
+
+}

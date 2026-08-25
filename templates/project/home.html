@@ -54,7 +54,7 @@
 
             <div class="hero-buttons">
 
-                <a href="{% url 'projects:project_list' %}"
+                <a href="{% url 'projects:home' %}#projects"
                    class="btn btn-primary">
 
                     View My Projects
@@ -727,92 +727,293 @@
 </section>
 
 
-
 <!-- =====================================================
-     SERVICES
+     SERVICES SECTION
 ===================================================== -->
 
 <section class="services-section" id="services">
 
-    <div class="container">
+    <div class="services-container">
 
-        <div class="section-header reveal">
+        <!-- SECTION HEADER -->
 
-            <span class="section-label">
-                What I Do
+        <div class="services-header">
+
+            <span class="section-eyebrow">
+                WHAT I DO
             </span>
 
-            <h2 class="section-title">
-                How I Can Help Your Business.
+            <h2>
+                How I Can Help Your
+                <span>Business.</span>
             </h2>
+
+            <p>
+                I combine business knowledge, data and technology
+                to build practical solutions that help businesses
+                understand their operations and make better decisions.
+            </p>
 
         </div>
 
 
+        <!-- SERVICES -->
+
         <div class="services-grid">
 
 
-            <div class="service-card reveal">
+            <!-- SERVICE 01 -->
 
-                <div class="service-number">
-                    01 — DATA
+            <article class="service-card">
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        01
+                    </span>
+
+                    <span class="service-category">
+                        DATA
+                    </span>
+
                 </div>
+
+
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                </div>
+
 
                 <h3>
-                    Data Analysis
+                    Data Analysis & Reporting
                 </h3>
 
-                <p>
 
-                    Clean, analyze and transform raw business
+                <p>
+                    I clean, analyze and transform raw business
                     data into meaningful insights that support
                     better decisions.
-
                 </p>
 
-            </div>
+
+                <ul class="service-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Data cleaning & preparation
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Exploratory data analysis
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Business reports
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Data-driven recommendations
+                    </li>
+
+                </ul>
 
 
-            <div class="service-card reveal">
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Discuss a Project
 
-                <div class="service-number">
-                    02 — BI
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- SERVICE 02 -->
+
+            <article class="service-card featured-service">
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        02
+                    </span>
+
+                    <span class="service-category">
+                        BI
+                    </span>
+
                 </div>
+
+
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
 
                 <h3>
                     Business Intelligence
                 </h3>
 
+
                 <p>
-
-                    Build reports, dashboards and visualizations
-                    that help organizations monitor performance
-                    and understand their business.
-
+                    I build interactive dashboards and visual
+                    reports that help organizations monitor
+                    performance and understand their business.
                 </p>
 
-            </div>
+
+                <ul class="service-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Power BI dashboards
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Interactive visualizations
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        KPI & performance reporting
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Executive dashboards
+                    </li>
+
+                </ul>
 
 
-            <div class="service-card reveal">
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Build a Dashboard
 
-                <div class="service-number">
-                    03 — PYTHON
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- SERVICE 03 -->
+
+            <article class="service-card">
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        03
+                    </span>
+
+                    <span class="service-category">
+                        PYTHON
+                    </span>
+
                 </div>
 
+
+                <div class="service-icon">
+
+                    <i class="fa-brands fa-python"></i>
+
+                </div>
+
+
                 <h3>
-                    Python Development
+                    Python Development & Automation
                 </h3>
 
-                <p>
 
-                    Build Python-powered applications,
+                <p>
+                    I build Python-powered applications,
                     automation tools and data-driven systems
                     using Django and Streamlit.
-
                 </p>
 
+
+                <ul class="service-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Python automation
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Django applications
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Streamlit dashboards
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Data processing systems
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Automate a Process
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+        </div>
+
+
+        <!-- SERVICES CTA -->
+
+        <div class="services-cta">
+
+            <div>
+
+                <span>
+                    HAVE A PROJECT IN MIND?
+                </span>
+
+                <h3>
+                    Let's turn your business problem
+                    into a practical solution.
+                </h3>
+
             </div>
+
+
+            <a
+                href="#contact"
+                class="services-cta-button"
+            >
+
+                Let's Talk
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </a>
 
         </div>
 
@@ -990,165 +1191,219 @@
 
 
 <!-- =====================================================
-     CONTACT
+     CONTACT SECTION
 ===================================================== -->
 
 <section class="contact-section" id="contact">
 
-    <div class="container">
+    <div class="contact-container">
 
-        <div class="contact-grid">
+        <!-- LEFT SIDE -->
+
+        <div class="contact-content">
+
+            <span class="contact-eyebrow">
+                GET IN TOUCH
+            </span>
+
+            <h2>
+                Let's build something useful.
+            </h2>
+
+            <p class="contact-intro">
+
+                Whether you need help understanding your data,
+                building a dashboard, automating a process or
+                developing a Python application, I'd be happy
+                to discuss your project.
+
+            </p>
 
 
-            <div class="contact-info reveal">
+            <!-- EMAIL -->
 
-                <span class="section-label">
-                    Get In Touch
-                </span>
+            <a
+                href="mailto:eidowu1992@gmail.com"
+                class="contact-info-item"
+            >
 
-                <h3>
-                    Let's build something useful.
-                </h3>
+                <div class="contact-info-icon">
 
-                <p>
+                    <i class="fa-solid fa-envelope"></i>
 
-                    Whether you need help understanding your
-                    data, building a dashboard, automating a
-                    process or developing a Python application,
-                    I'd be happy to discuss your project.
+                </div>
 
-                </p>
+                <div>
+
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p>
+                        eidowu1992@gmail.com
+                    </p>
+
+                </div>
+
+            </a>
 
 
-                <div class="contact-item">
+            <!-- LINKEDIN -->
 
-                    <div class="contact-icon">
+            <a
+                href="#"
+                class="contact-info-item"
+                target="_blank"
+            >
 
-                        <i class="fa-regular fa-envelope"></i>
+                <div class="contact-info-icon">
+
+                    <i class="fa-brands fa-linkedin"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        LinkedIn
+                    </h3>
+
+                    <p>
+                        Connect with me professionally
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <!-- GITHUB -->
+
+            <a
+                href="#"
+                class="contact-info-item"
+                target="_blank"
+            >
+
+                <div class="contact-info-icon">
+
+                    <i class="fa-brands fa-github"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        GitHub
+                    </h3>
+
+                    <p>
+                        Explore my projects
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="contact-form-card">
+
+            <h3>
+                Send Me a Message
+            </h3>
+
+            <p>
+                Tell me about your project, business problem
+                or opportunity.
+            </p>
+
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="contact-success">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        {{ message }}
 
                     </div>
 
-                    <div>
+                {% endfor %}
 
-                        <strong>Email</strong>
+            {% endif %}
 
-                        <span>
-                            eidowu1992@gmail.com
-                        </span>
 
-                    </div>
+            <form
+                method="POST"
+                action="{% url 'projects:contact' %}"
+                class="contact-form"
+            >
+
+                {% csrf_token %}
+
+
+                <div class="contact-field">
+
+                    <label for="{{ form.name.id_for_label }}">
+                        Your Name
+                    </label>
+
+                    {{ contact_form.name }}
 
                 </div>
 
 
-                <div class="contact-item">
+                <div class="contact-field">
 
-                    <div class="contact-icon">
+                    <label for="{{ form.email.id_for_label }}">
+                        Email Address
+                    </label>
 
-                        <i class="fa-brands fa-linkedin"></i>
-
-                    </div>
-
-                    <div>
-
-                        <strong>LinkedIn</strong>
-
-                        <span>
-                            Connect with me professionally
-                        </span>
-
-                    </div>
+                    {{ contact_form.email }}
 
                 </div>
 
 
-                <div class="contact-item">
+                <div class="contact-field">
 
-                    <div class="contact-icon">
+                    <label for="{{ form.subject.id_for_label }}">
+                        Subject
+                    </label>
 
-                        <i class="fa-brands fa-github"></i>
-
-                    </div>
-
-                    <div>
-
-                        <strong>GitHub</strong>
-
-                        <span>
-                            Explore my projects
-                        </span>
-
-                    </div>
+                    {{ contact_form.subject }}
 
                 </div>
 
-            </div>
+
+                <div class="contact-field">
+
+                    <label for="{{ form.message.id_for_label }}">
+                        Tell Me About Your Project
+                    </label>
+
+                    {{ contact_form.message }}
+
+                </div>
 
 
-            <div class="contact-form reveal">
+                <button
+                    type="submit"
+                    class="contact-submit"
+                >
 
-                <form>
+                    Send Message
 
-                    <div class="form-group">
+                    <i class="fa-solid fa-paper-plane"></i>
 
-                        <label for="name">
-                            Your Name
-                        </label>
+                </button>
 
-                        <input
-                            type="text"
-                            id="name"
-                            class="form-control"
-                            placeholder="John Doe"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="email">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            class="form-control"
-                            placeholder="john@example.com"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="message">
-                            Tell Me About Your Project
-                        </label>
-
-                        <textarea
-                            id="message"
-                            class="form-control"
-                            placeholder="I'd like to discuss..."
-                        ></textarea>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary">
-
-                        Send Message
-
-                        <i class="fa-solid fa-paper-plane"></i>
-
-                    </button>
-
-                </form>
-
-            </div>
+            </form>
 
         </div>
 

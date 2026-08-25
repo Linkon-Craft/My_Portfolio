@@ -10,33 +10,30 @@
 
 {% block content %}
 
-<section class="project-detail-section">
-
-    <div class="container">
 
 
-        <!-- Back -->
+<section class="project-detail-page">
+
+    <div class="project-detail-container">
+
+        <!-- BACK TO PROJECTS -->
 
         <a
-            href="{% url 'projects:project_list' %}"
-            class="project-back"
+            href="{% url 'projects:home' %}#projects"
+            class="project-back-link"
         >
-
             <i class="fa-solid fa-arrow-left"></i>
-
             Back to Projects
-
         </a>
 
 
-
-        <!-- Header -->
+        <!-- PROJECT HEADER -->
 
         <div class="project-detail-header">
 
             {% if project.category %}
 
-                <span class="section-label">
+                <span class="project-detail-label">
                     {{ project.category }}
                 </span>
 
@@ -48,93 +45,14 @@
             </h1>
 
 
-            <p>
-                {{ project.description }}
+            <p class="project-detail-intro">
+                {{ project.descriptions }}
             </p>
 
-        </div>
 
+            <!-- ACTION BUTTONS -->
 
-
-        <!-- Project Image -->
-
-        {% if project.image %}
-
-            <div class="project-detail-image">
-
-                <img
-                    src="{{ project.image.url }}"
-                    alt="{{ project.title }}"
-                >
-
-            </div>
-
-        {% endif %}
-
-
-
-        <!-- Project Information -->
-
-        <div class="project-detail-grid">
-
-
-            <!-- Main Content -->
-
-            <div class="project-detail-main">
-
-                <h2>
-                    Project Overview
-                </h2>
-
-                <p>
-                    {{ project.description }}
-                </p>
-
-
-                <h2>
-                    Technologies Used
-                </h2>
-
-                {% if project.technologies %}
-
-                    <div class="detail-technologies">
-
-
-                        <span>
-                            {{ project.technologies }}
-                        </span>
-
-                    </div>
-
-                {% endif %}
-
-            </div>
-
-
-
-            <!-- Project Sidebar -->
-
-            <aside class="project-detail-sidebar">
-
-
-                {% if project.github_url %}
-
-                    <a
-                        href="{{ project.github_url }}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="detail-button github-button"
-                    >
-
-                        <i class="fa-brands fa-github"></i>
-
-                        GitHub Repository
-
-                    </a>
-
-                {% endif %}
-
-
+            <div class="project-detail-actions">
 
                 {% if project.live_url %}
 
@@ -142,7 +60,7 @@
                         href="{{ project.live_url }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="detail-button live-button"
+                        class="detail-live-btn"
                     >
 
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -154,10 +72,708 @@
                 {% endif %}
 
 
+                {% if project.github_url %}
+
+                    <a
+                        href="{{ project.github_url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="detail-github-btn"
+                    >
+
+                        <i class="fa-brands fa-github"></i>
+
+                        GitHub Repository
+
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT VIDEO -->
+
+        {% if project.video %}
+
+            <div class="project-demo-section">
+
+                <div class="case-study-heading">
+
+                    <span>PROJECT DEMO</span>
+
+                    <h2>
+                        See It In Action
+                    </h2>
+
+                    <p>
+                        A short walkthrough of the project and its key features.
+                    </p>
+
+                </div>
+
+
+                <div class="project-video-container">
+
+                    <video
+                        class="project-demo-video"
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+
+                        <source
+                            src="{{ project.videos.url }}"
+                            type="video/mp4"
+                        >
+
+                        Your browser does not support video playback.
+
+                    </video>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- PROJECT IMAGE -->
+
+        {% if project.image %}
+
+            <div class="project-main-image">
+
+                <img
+                    src="{{ project.image.url }}"
+                    alt="{{ project.title }}"
+                >
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- CASE STUDY -->
+
+        <div class="case-study-layout">
+
+
+            <!-- MAIN CONTENT -->
+
+            <main class="case-study-main">
+
+
+                <!-- OVERVIEW -->
+
+                <section class="case-study-section">
+
+                    <span class="case-study-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Project Overview
+                        </h2>
+
+                        <p>
+                            {{ project.descriptions }}
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PROBLEM -->
+
+                {% if project.problem %}
+
+                    <section class="case-study-section">
+
+                        <span class="case-study-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                The Problem
+                            </h2>
+
+                            <p>
+                                {{ project.problem }}
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                {% endif %}
+
+
+                <!-- APPROACH -->
+
+                {% if project.approach %}
+
+                    <section class="case-study-section">
+
+                        <span class="case-study-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                My Approach
+                            </h2>
+
+                            <p>
+                                {{ project.approach }}
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                {% endif %}
+
+
+                <!-- RESULTS -->
+
+                {% if project.results %}
+
+                    <section class="case-study-section">
+
+                        <span class="case-study-number">
+                            04
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Results
+                            </h2>
+
+                            <p>
+                                {{ project.results }}
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                {% endif %}
+
+
+                <!-- BUSINESS IMPACT -->
+
+                {% if project.business_impact %}
+
+                    <section class="case-study-section">
+
+                        <span class="case-study-number">
+                            05
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Business Impact
+                            </h2>
+
+                            <p>
+                                {{ project.business_impact }}
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                {% endif %}
+
+            </main>
+
+
+            <!-- SIDEBAR -->
+
+            <aside class="case-study-sidebar">
+
+
+                <!-- TECHNOLOGIES -->
+
+                <div class="case-study-card">
+
+                    <h3>
+                        Technologies
+                    </h3>
+
+
+                    {% if project.technologies %}
+
+                        <div class="technology-list">
+
+                            {% for technology in project.technologies|make_list %}
+
+                            {% endfor %}
+
+                            <div class="technology-item">
+                                {{ project.technologies }}
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- PROJECT LINKS -->
+
+                <div class="case-study-card">
+
+                    <h3>
+                        Project Links
+                    </h3>
+
+
+                    {% if project.live_url %}
+
+                        <a
+                            href="{{ project.live_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="sidebar-link"
+                        >
+
+                            <span>
+                                <i class="fa-solid fa-chart-line"></i>
+                                Live Dashboard
+                            </span>
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </a>
+
+                    {% endif %}
+
+
+                    {% if project.github_url %}
+
+                        <a
+                            href="{{ project.github_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="sidebar-link"
+                        >
+
+                            <span>
+                                <i class="fa-brands fa-github"></i>
+                                GitHub Repository
+                            </span>
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
             </aside>
 
         </div>
 
+
+        <!-- REVIEWS -->
+        <section class="reviews-section" id="reviews">
+            {% if messages %}
+
+                <div class="site-messages">
+
+                    {% for message in messages %}
+
+                    <div class="site-message success">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <div>
+
+                            <strong>
+                            Thank you!
+                            </strong>
+
+                            <p>
+                                {{ message }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+            <div class="reviews-header">
+
+                <span class="section-label">
+                    PROJECT REVIEWS
+                </span>
+
+                <h2>
+                    What People Think
+                </h2>
+
+            </div>
+
+
+        <!-- =====================================================
+            RATING SUMMARY
+        ===================================================== -->
+
+            <div class="rating-summary">
+
+                <div class="rating-main">
+
+                    <div class="rating-number">
+
+                        {{ average_rating|floatformat:1 }}
+
+                        <span>/ 5</span>
+
+                    </div>
+
+
+                    <div class="average-stars">
+
+                        {% for i in "12345" %}
+
+                            {% if forloop.counter <= average_rating %}
+
+                                <span class="filled">★</span>
+
+                            {% else %}
+
+                                <span>☆</span>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <p>
+
+                        Based on
+
+                        <strong>
+                            {{ review_count }}
+                        </strong>
+
+                        review{{ review_count|pluralize }}
+
+                    </p>
+
+                </div>
+
+
+                <!-- Rating Distribution -->
+
+                <div class="rating-distribution">
+
+                    {% for rating, count in rating_distribution.items %}
+
+                        <div class="rating-row">
+
+                            <span class="rating-label">
+                                {{ rating }}
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+
+
+                            <div class="rating-bar">
+
+                                {% if review_count %}
+
+                                    <div
+                                        class="rating-bar-fill"
+                                        style="width: {% widthratio count review_count 100 %}%"
+                                    ></div>
+
+                                {% else %}
+
+                                    <div
+                                        class="rating-bar-fill"
+                                        style="width: 0%"
+                                    ></div>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <span class="rating-count">
+                                {{ count }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                REVIEWS LIST
+            ===================================================== -->
+
+            <div class="reviews-list">
+
+                {% for review in reviews %}
+
+                    <article class="review-card">
+
+                        <div class="review-top">
+
+                            <div class="review-author">
+
+                                <div class="review-avatar">
+
+                                    {{ review.name|first|upper }}
+
+                                </div>
+
+
+                                <div>
+
+                                    <h4>
+                                        {{ review.name }}
+                                    </h4>
+
+                                    <small>
+                                        {{ review.created_at|date:"M d, Y" }}
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="review-stars">
+
+                                {% for i in "12345" %}
+
+                                    {% if forloop.counter <= review.rating %}
+
+                                        <span class="filled">
+                                            ★
+                                        </span>
+
+                                    {% else %}
+
+                                        <span>
+                                            ☆
+                                        </span>
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="review-comment">
+
+                            <i class="fa-solid fa-quote-left"></i>
+
+                            <p>
+                                {{ review.comment }}
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                {% empty %}
+
+                    <div class="no-reviews">
+
+                        <i class="fa-regular fa-comment-dots"></i>
+
+                        <h3>
+                            No reviews yet
+                        </h3>
+
+                        <p>
+                            Be the first person to share your
+                            thoughts about this project.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Leave Review -->
+
+            <div class="review-form-card">
+
+                <div class="review-form-heading">
+
+                    <span class="section-label">
+                        SHARE YOUR FEEDBACK
+                    </span>
+
+                    <h3>
+                        Leave a Review
+                    </h3>
+
+                    <p>
+                        Your feedback helps me improve my work.
+                    </p>
+
+                </div>
+
+
+                <form
+                    method="POST"
+                    class="review-form"
+                >
+
+                    {% csrf_token %}
+
+
+                    <div class="form-group">
+
+                        <label for="id_name">
+                            Your Name
+                        </label>
+
+                        {{ review_form.name }}
+
+                    </div>
+
+
+                    <!-- CLICKABLE STAR RATING -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Your Rating
+                        </label>
+
+
+                        <div
+                            class="star-rating"
+                            id="starRating"
+                        >
+
+                            <input
+                                type="radio"
+                                name="star_rating"
+                                value="1"
+                                id="star1"
+                            >
+
+                            <label for="star1">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                name="star_rating"
+                                value="2"
+                                id="star2"
+                            >
+
+                            <label for="star2">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                name="star_rating"
+                                value="3"
+                                id="star3"
+                            >
+
+                            <label for="star3">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                name="star_rating"
+                                value="4"
+                                id="star4"
+                            >
+
+                            <label for="star4">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                name="star_rating"
+                                value="5"
+                                id="star5"
+                            >
+
+                            <label for="star5">
+                                ★
+                            </label>
+
+                        </div>
+                        {{ review_form.rating }}
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="id_comment">
+                            Your Comment
+                        </label>
+
+                        {{ review_form.comment }}
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="review-submit"
+                    >
+
+                        Submit Review
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
 
     </div>
 
