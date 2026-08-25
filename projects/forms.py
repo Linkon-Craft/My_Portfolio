@@ -96,43 +96,7 @@ class ProjectForm(forms.ModelForm):
         }
 
 
-# class ReviewForm(forms.ModelForm):
 
-    class Meta:
-
-        model = Review
-
-        fields = [
-            "name",
-            "rating",
-            "comment",
-        ]
-
-        widgets = {
-
-            "name": forms.TextInput(
-                attrs={
-                    "placeholder": "Your name"
-                }
-            ),
-
-            "rating": forms.Select(
-                choices=[
-                    (5, "★★★★★ Excellent"),
-                    (4, "★★★★☆ Very Good"),
-                    (3, "★★★☆☆ Good"),
-                    (2, "★★☆☆☆ Fair"),
-                    (1, "★☆☆☆☆ Needs Improvement"),
-                ]
-            ),
-
-            "comment": forms.Textarea(
-                attrs={
-                    "placeholder": "Share your thoughts about this project...",
-                    "rows": 5
-                }
-            ),
-        }
 
 class ReviewForm(forms.ModelForm):
 

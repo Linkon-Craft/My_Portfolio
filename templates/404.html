@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+Page Not Found | Oyewole Olamilekan Usman
+{% endblock %}
+
+{% block meta_description %}
+The page you are looking for could not be found. Return to the portfolio homepage.
+{% endblock %}
+
+
+{% block content %}
+
+<section class="error-page">
+
+    <div class="error-content">
+
+        <!-- Error Number -->
+
+        <div class="error-number">
+
+            <span>4</span>
+
+            <div class="error-icon">
+                <i class="fa-solid fa-compass"></i>
+            </div>
+
+            <span>4</span>
+
+        </div>
+
+
+        <!-- Label -->
+
+        <span class="section-label">
+            PAGE NOT FOUND
+        </span>
+
+
+        <!-- Heading -->
+
+        <h1>
+            Looks Like You Took
+            <span>A Wrong Turn.</span>
+        </h1>
+
+
+        <!-- Description -->
+
+        <p>
+            The page you're looking for doesn't exist,
+            may have been moved, or the link might be incorrect.
+        </p>
+
+
+        <!-- Actions -->
+
+        <div class="error-actions">
+
+            <a
+                href="{% url 'projects:home' %}"
+                class="error-primary"
+            >
+                <i class="fa-solid fa-house"></i>
+
+                Back to Home
+            </a>
+
+
+            <a
+                href="{% url 'projects:project_list' %}"
+                class="error-secondary"
+            >
+                View Projects
+
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

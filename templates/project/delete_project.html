@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Delete {{ project.title }} | Portfolio Admin
+{% endblock title %}
+
+
+{% block meta_description %}
+Confirm deletion of {{ project.title }}.
+{% endblock meta_description %}
+
+
+{% block content %}
+
+<section class="delete-project-section">
+
+    <div class="delete-project-container">
+
+        <div class="delete-project-card">
+
+            <!-- ICON -->
+
+            <div class="delete-warning-icon">
+
+                <i class="fa-solid fa-trash-can"></i>
+
+            </div>
+
+
+            <!-- EYEBROW -->
+
+            <span class="delete-eyebrow">
+                PORTFOLIO ADMIN
+            </span>
+
+
+            <!-- TITLE -->
+
+            <h1>
+                Delete <span>Project?</span>
+            </h1>
+
+
+            <!-- MESSAGE -->
+
+            <p class="delete-message">
+
+                Are you sure you want to delete
+
+                <strong>
+                    "{{ project.title }}"
+                </strong>?
+
+            </p>
+
+
+            <p class="delete-warning">
+
+                This action cannot be undone. The project,
+                its information and associated portfolio
+                content will be removed.
+
+            </p>
+
+
+            <!-- PROJECT PREVIEW -->
+
+            {% if project.image %}
+
+                <div class="delete-project-preview">
+
+                    <img
+                        src="{{ project.image.url }}"
+                        alt="{{ project.title }}"
+                    >
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- ACTIONS -->
+
+            <form
+                method="POST"
+                action="{% url 'projects:delete_project' project.pk %}"
+                class="delete-project-actions"
+            >
+
+                {% csrf_token %}
+
+
+                <a
+                    href="{% url 'projects:project_detail' project.pk %}"
+                    class="delete-cancel-btn"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Cancel
+
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="delete-confirm-btn"
+                >
+
+                    <i class="fa-solid fa-trash-can"></i>
+
+                    Yes, Delete Project
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}

@@ -7,6 +7,10 @@
     Oyewole Olamilekan Usman | Data Analyst & Python Developer
 {% endblock %}
 
+{% block meta_description %}
+Learn about Oyewole Olamilekan Usman, a Data Analyst and Python Developer combining Business Administration with data science and technology.
+{% endblock %}
+
 
 {% block content %}
 
@@ -24,13 +28,13 @@
 
         <div class="hero-content reveal">
 
-            <div class="hero-badge">
+            <a href="{% url 'projects:home' %}#contact" class="hero-badge">
 
                 <span></span>
 
                 Available for freelance & career opportunities
 
-            </div>
+            </a>
 
 
             <h1>
@@ -255,7 +259,9 @@
                 -->
 
                 <img src="{% static 'image/profile.jpeg' %}"
-                     alt="Oyewole Olamilekan Usman">
+                     alt="Oyewole Olamilekan Usman"
+                     loading="lazy"
+                     >
 
             </div>
 
@@ -983,7 +989,16 @@
 
             </article>
 
+             <a href="{% url 'projects:services' %}" class="services-view-all">
+                Explore All Services
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
         </div>
+
+
+       
+
 
 
         <!-- SERVICES CTA -->
@@ -1071,7 +1086,8 @@
 
                                 <img
                                     src="{{ project.image.url }}"
-                                    alt="{{ project.title }}"
+                                    alt="{{ project.title }} project preview"
+                                    loading="lazy"
                                 >
 
                             {% else %}
@@ -1151,7 +1167,7 @@
             <div class="projects-more reveal">
 
                 <a
-                    href="{% url 'projects:project_list' %}"
+                    href="{% url 'projects:home' %}#projects"
                     class="btn-secondary"
                 >
 
@@ -1223,7 +1239,7 @@
             <!-- EMAIL -->
 
             <a
-                href="mailto:eidowu1992@gmail.com"
+                href="mailto:oyewoleolamilekan208@gmail.com"
                 class="contact-info-item"
             >
 
@@ -1240,7 +1256,7 @@
                     </h3>
 
                     <p>
-                        eidowu1992@gmail.com
+                        Send email directly
                     </p>
 
                 </div>
@@ -1251,7 +1267,7 @@
             <!-- LINKEDIN -->
 
             <a
-                href="#"
+                href="https://www.linkedin.com/in/oyewole-olamilekan-usman-884907378/"
                 class="contact-info-item"
                 target="_blank"
             >
@@ -1280,7 +1296,7 @@
             <!-- GITHUB -->
 
             <a
-                href="#"
+                href="https://www.github.com/Linkon-Craft"
                 class="contact-info-item"
                 target="_blank"
             >

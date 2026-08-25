@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
 
@@ -17,51 +16,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
         menuToggle.addEventListener("click", function () {
 
-            navbar.classList.toggle("active");
+            const isOpen =
+                navbar.classList.toggle("active");
 
-            menuToggle.classList.toggle("active");
+            menuToggle.classList.toggle(
+                "active",
+                isOpen
+            );
 
 
             const icon =
                 menuToggle.querySelector("i");
 
 
-            if (navbar.classList.contains("active")) {
+            if (icon) {
 
-                if (icon) {
-
-                    icon.classList.remove("fa-bars");
-
-                    icon.classList.add("fa-xmark");
-
-                }
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Close navigation"
+                icon.classList.toggle(
+                    "fa-bars",
+                    !isOpen
                 );
 
-            } else {
-
-                if (icon) {
-
-                    icon.classList.remove("fa-xmark");
-
-                    icon.classList.add("fa-bars");
-
-                }
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
+                icon.classList.toggle(
+                    "fa-xmark",
+                    isOpen
                 );
 
             }
 
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation"
+                    : "Open navigation"
+            );
+
         });
 
 
-        /* Close mobile menu after clicking a link */
+        /* Close menu after clicking a navigation link */
 
         const navLinks =
             navbar.querySelectorAll("a");
@@ -71,9 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             link.addEventListener("click", function () {
 
-                navbar.classList.remove("active");
+                navbar.classList.remove(
+                    "active"
+                );
 
-                menuToggle.classList.remove("active");
+                menuToggle.classList.remove(
+                    "active"
+                );
 
 
                 const icon =
@@ -82,11 +85,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (icon) {
 
-                    icon.classList.remove("fa-xmark");
+                    icon.classList.remove(
+                        "fa-xmark"
+                    );
 
-                    icon.classList.add("fa-bars");
+                    icon.classList.add(
+                        "fa-bars"
+                    );
 
                 }
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
 
                 menuToggle.setAttribute(
                     "aria-label",
@@ -116,22 +130,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        if (window.scrollY > 30) {
-
-            header.classList.add("scrolled");
-
-        } else {
-
-            header.classList.remove("scrolled");
-
-        }
+        header.classList.toggle(
+            "scrolled",
+            window.scrollY > 30
+        );
 
     }
 
 
     window.addEventListener(
         "scroll",
-        updateHeader
+        updateHeader,
+        { passive: true }
     );
 
 
@@ -147,7 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".reveal");
 
 
-    if ("IntersectionObserver" in window) {
+    if (
+        "IntersectionObserver" in window &&
+        revealElements.length > 0
+    ) {
 
         const observer =
             new IntersectionObserver(
@@ -236,9 +249,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     event.preventDefault();
 
 
+                    const prefersReducedMotion =
+                        window.matchMedia(
+                            "(prefers-reduced-motion: reduce)"
+                        ).matches;
+
+
                     target.scrollIntoView({
 
-                        behavior: "smooth",
+                        behavior: prefersReducedMotion
+                            ? "auto"
+                            : "smooth",
 
                         block: "start"
 
@@ -250,6 +271,48 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     });
+
+
+
+    /* =====================================================
+       REVIEW STAR RATING
+    ===================================================== */
+
+    const starRating =
+        document.querySelector("#starRating");
+
+
+    if (starRating) {
+
+        const stars =
+            starRating.querySelectorAll(
+                'input[name="star_rating"]'
+            );
+
+
+        const ratingInput =
+            document.querySelector("#id_rating");
+
+
+        stars.forEach(function (star) {
+
+            star.addEventListener(
+                "change",
+                function () {
+
+                    if (ratingInput) {
+
+                        ratingInput.value =
+                            this.value;
+
+                    }
+
+                }
+            );
+
+        });
+
+    }
 
 
 
@@ -271,36 +334,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-
-/* =====================================================
-   REVIEW STAR RATING
-===================================================== */
-
-const starRating = document.querySelector("#starRating");
-
-if (starRating) {
-
-    const stars = starRating.querySelectorAll(
-        'input[name="star_rating"]'
-    );
-
-    const ratingInput = document.querySelector(
-        "#id_rating"
-    );
-
-
-    stars.forEach(function (star) {
-
-        star.addEventListener("change", function () {
-
-            if (ratingInput) {
-
-                ratingInput.value = this.value;
-
-            }
-
-        });
-
-    });
-
-}

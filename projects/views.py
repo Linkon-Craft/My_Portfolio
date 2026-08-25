@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.db.models import Avg, Count
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
 from django.urls import reverse
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 from .models import Project, Review, ContactMessage
@@ -18,9 +20,7 @@ def home(request):
 
     return render(request, 'project/home.html', {"all_projects":all_projects,  "contact_form": contact_form})
 
-def project_list(request):
-    all_projects = Project.objects.all()
-    return render(request, 'project/projects.html', {"all_projects":all_projects})
+
 
 def project_detail(request, pk):
 
@@ -80,7 +80,7 @@ def project_detail(request, pk):
 
     return render(request, "project/project_detail.html", {"project": project, "reviews": reviews, "review_form": review_form, "average_rating": average_rating,"review_count": review_count, "rating_distribution": rating_distribution,})
 
-
+@staff_member_required
 def add_project(request):
     form = ProjectForm()
     if request.method == "POST":
@@ -91,60 +91,112 @@ def add_project(request):
             return redirect('projects:home')
     return render(request, 'project/add_project.html', {"form":form})  
 
+
+@staff_member_required
+def update_project(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    form = ProjectForm(instance=project)
+
+    if request.method == "POST":
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Project updated Successfully")
+            return redirect('projects:home')
+    context = {
+        'form':form,
+        'project':project
+    }
+    return render(request, "project/update_project.html", context)
+
+
+
+def services(request):
+    return render(request, "project/services.html")
+
+
 def contact(request):
 
     if request.method == "POST":
-        form = ContactForm(request.POST)
 
-        if form.is_valid():
-            contact_message = form.save()
-            email = EmailMessage(
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
 
-                subject=f"Portfolio Contact: {contact_message.subject}",
+        subject = f"Portfolio Contact from {name}"
 
-                body=f"""
-You have received a new message from your portfolio website.
+        body = f"""
+Name: {name}
 
-Name:
-{contact_message.name}
-
-Email:
-{contact_message.email}
-
-Subject:
-{contact_message.subject}
+Email: {email}
 
 Message:
-{contact_message.message}
-""",
 
-                from_email=settings.DEFAULT_FROM_EMAIL,
+{message}
+"""
 
-                to=[
-                    settings.CONTACT_EMAIL
-                ],
+        try:
 
-                reply_to=[
-                    contact_message.email
-                ],
-            )
-
-            email.send(
-                fail_silently=False
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.CONTACT_EMAIL],
+                fail_silently=False,
             )
 
             messages.success(
                 request,
-                "Your message has been sent successfully. I'll get back to you soon."
+                "Your message has been sent successfully."
             )
 
-            return redirect(
-                f"{reverse('projects:home')}#contact"
+        except Exception as e:
+
+            print("EMAIL ERROR:", e)
+
+            messages.error(
+                request,
+                "Sorry, your message could not be sent "
+                "right now. Please try again."
             )
 
-    else:
-        form = ContactForm()
+        return redirect(
+            f"{reverse('projects:home')}#contact"
+        )
 
     return redirect(
         f"{reverse('projects:home')}#contact"
+    )
+
+
+@staff_member_required
+def delete_project(request, pk):
+
+    project = get_object_or_404(
+        Project,
+        pk=pk
+    )
+
+    if request.method == "POST":
+
+        project_title = project.title
+
+        project.delete()
+
+        messages.success(
+            request,
+            f'"{project_title}" was deleted successfully.'
+        )
+
+        return redirect(
+            "projects:home"
+        )
+
+    return render(
+        request,
+        "project/delete_project.html",
+        {
+            "project": project
+        }
     )

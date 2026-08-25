@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
+
 {% block title %}
-Add Project | Oyewole Olamilekan Usman
+Update {{ project.title }} | Oyewole Olamilekan Usman
 {% endblock title %}
+
+
+{% block meta_description %}
+Update {{ project.title }} in the Oyewole Olamilekan Usman portfolio.
+{% endblock meta_description %}
 
 
 {% block content %}
@@ -11,31 +17,42 @@ Add Project | Oyewole Olamilekan Usman
 
     <div class="admin-project-container">
 
-        <!-- PAGE HEADER -->
+
+        <!-- ==================================================
+             PAGE HEADER
+        =================================================== -->
+
         <div class="admin-project-header">
 
             <span class="admin-eyebrow">
                 PORTFOLIO ADMIN
             </span>
 
+
             <h1>
-                Add New <span>Project.</span>
+                Update <span>Project.</span>
             </h1>
 
+
             <p>
-                Add a project to your portfolio with its description,
-                technologies, results, media and project links.
+                Update the information, technologies, results,
+                media and links for this portfolio project.
             </p>
 
         </div>
 
 
-        <!-- FORM -->
+
+        <!-- ==================================================
+             FORM CARD
+        =================================================== -->
+
         <div class="admin-project-card">
+
 
             <form
                 method="POST"
-                action="{% url 'projects:add_project' %}"
+                action="{% url 'projects:update_project' project.pk %}"
                 enctype="multipart/form-data"
                 class="project-form"
             >
@@ -43,94 +60,140 @@ Add Project | Oyewole Olamilekan Usman
                 {% csrf_token %}
 
 
-                <!-- ==============================
+
+                <!-- ==================================================
                      PROJECT INFORMATION
-                =============================== -->
+                =================================================== -->
 
                 <div class="form-section">
+
 
                     <div class="form-section-heading">
 
                         <div class="form-icon">
+
                             <i class="fa-solid fa-circle-info"></i>
+
                         </div>
 
+
                         <div>
-                            <h2>Project Information</h2>
+
+                            <h2>
+                                Project Information
+                            </h2>
 
                             <p>
                                 Basic information about the project.
                             </p>
+
                         </div>
 
                     </div>
 
 
+
                     <div class="form-grid">
+
+
+                        <!-- TITLE -->
 
                         <div class="form-group full-width">
 
-                            <label for="{{ form.title.id_for_label }}">
+                            <label
+                                for="{{ form.title.id_for_label }}"
+                            >
                                 Project Title
                             </label>
 
+
                             {{ form.title }}
 
+
                             {% for error in form.title.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
 
 
+
+                        <!-- CATEGORY -->
+
                         <div class="form-group">
 
-                            <label for="{{ form.category.id_for_label }}">
+                            <label
+                                for="{{ form.category.id_for_label }}"
+                            >
                                 Category
                             </label>
 
+
                             {{ form.category }}
 
+
                             {% for error in form.category.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
 
+
+
+                        <!-- TECHNOLOGIES -->
 
                         <div class="form-group">
 
-                            <label for="{{ form.technologies.id_for_label }}">
+                            <label
+                                for="{{ form.technologies.id_for_label }}"
+                            >
                                 Technologies
                             </label>
 
+
                             {{ form.technologies }}
 
+
                             {% for error in form.technologies.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
 
 
+
+                        <!-- DESCRIPTION -->
+
                         <div class="form-group full-width">
 
-                            <label for="{{ form.description.id_for_label }}">
+                            <label
+                                for="{{ form.description.id_for_label }}"
+                            >
                                 Project Description
                             </label>
 
+
                             {{ form.description }}
 
+
                             {% for error in form.description.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
@@ -141,94 +204,139 @@ Add Project | Oyewole Olamilekan Usman
 
 
 
-                <!-- ==============================
+                <!-- ==================================================
                      PROBLEM & SOLUTION
-                =============================== -->
+                =================================================== -->
 
                 <div class="form-section">
+
 
                     <div class="form-section-heading">
 
                         <div class="form-icon">
+
                             <i class="fa-solid fa-lightbulb"></i>
+
                         </div>
 
+
                         <div>
-                            <h2>Problem & Solution</h2>
+
+                            <h2>
+                                Problem & Solution
+                            </h2>
 
                             <p>
                                 Explain the problem, approach and results.
                             </p>
+
                         </div>
 
                     </div>
 
 
+
+                    <!-- PROBLEM -->
+
                     <div class="form-group">
 
-                        <label for="{{ form.problem.id_for_label }}">
+                        <label
+                            for="{{ form.problem.id_for_label }}"
+                        >
                             Problem
                         </label>
 
+
                         {{ form.problem }}
 
+
                         {% for error in form.problem.errors %}
+
                             <small class="form-error">
                                 {{ error }}
                             </small>
+
                         {% endfor %}
 
                     </div>
 
+
+
+                    <!-- APPROACH -->
 
                     <div class="form-group">
 
-                        <label for="{{ form.approach.id_for_label }}">
+                        <label
+                            for="{{ form.approach.id_for_label }}"
+                        >
                             Approach
                         </label>
 
+
                         {{ form.approach }}
 
+
                         {% for error in form.approach.errors %}
+
                             <small class="form-error">
                                 {{ error }}
                             </small>
+
                         {% endfor %}
 
                     </div>
 
 
+
                     <div class="form-grid">
+
+
+                        <!-- RESULTS -->
 
                         <div class="form-group">
 
-                            <label for="{{ form.results.id_for_label }}">
+                            <label
+                                for="{{ form.results.id_for_label }}"
+                            >
                                 Results
                             </label>
 
+
                             {{ form.results }}
 
+
                             {% for error in form.results.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
 
 
+
+                        <!-- BUSINESS IMPACT -->
+
                         <div class="form-group">
 
-                            <label for="{{ form.business_impact.id_for_label }}">
+                            <label
+                                for="{{ form.business_impact.id_for_label }}"
+                            >
                                 Business Impact
                             </label>
 
+
                             {{ form.business_impact }}
 
+
                             {% for error in form.business_impact.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
@@ -239,60 +347,88 @@ Add Project | Oyewole Olamilekan Usman
 
 
 
-                <!-- ==============================
+                <!-- ==================================================
                      PROJECT LINKS
-                =============================== -->
+                =================================================== -->
 
                 <div class="form-section">
+
 
                     <div class="form-section-heading">
 
                         <div class="form-icon">
+
                             <i class="fa-solid fa-link"></i>
+
                         </div>
 
+
                         <div>
-                            <h2>Project Links</h2>
+
+                            <h2>
+                                Project Links
+                            </h2>
 
                             <p>
-                                Connect visitors to your source code and live application.
+                                Connect visitors to your source code
+                                and live application.
                             </p>
+
                         </div>
 
                     </div>
 
 
+
                     <div class="form-grid">
+
+
+                        <!-- GITHUB -->
 
                         <div class="form-group">
 
-                            <label for="{{ form.github_url.id_for_label }}">
+                            <label
+                                for="{{ form.github_url.id_for_label }}"
+                            >
                                 GitHub Repository
                             </label>
 
+
                             {{ form.github_url }}
 
+
                             {% for error in form.github_url.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
 
 
+
+                        <!-- LIVE -->
+
                         <div class="form-group">
 
-                            <label for="{{ form.live_url.id_for_label }}">
+                            <label
+                                for="{{ form.live_url.id_for_label }}"
+                            >
                                 Live Dashboard / Application
                             </label>
 
+
                             {{ form.live_url }}
 
+
                             {% for error in form.live_url.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
@@ -303,60 +439,134 @@ Add Project | Oyewole Olamilekan Usman
 
 
 
-                <!-- ==============================
+                <!-- ==================================================
                      MEDIA
-                =============================== -->
+                =================================================== -->
 
                 <div class="form-section">
+
 
                     <div class="form-section-heading">
 
                         <div class="form-icon">
+
                             <i class="fa-solid fa-photo-film"></i>
+
                         </div>
 
+
                         <div>
-                            <h2>Project Media</h2>
+
+                            <h2>
+                                Project Media
+                            </h2>
 
                             <p>
-                                Upload a project image and optional demonstration video.
+                                Replace the project image or
+                                demonstration video if needed.
                             </p>
+
                         </div>
 
                     </div>
 
 
+
                     <div class="form-grid">
+
+
+                        <!-- IMAGE -->
 
                         <div class="form-group">
 
-                            <label for="{{ form.image.id_for_label }}">
+                            <label
+                                for="{{ form.image.id_for_label }}"
+                            >
                                 Project Image
                             </label>
 
+
+                            {% if project.image %}
+
+                                <div class="current-media">
+
+                                    <img
+                                        src="{{ project.image.url }}"
+                                        alt="{{ project.title }}"
+                                    >
+
+                                    <span>
+                                        Current image
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
                             {{ form.image }}
 
+
                             {% for error in form.image.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
 
 
+
+                        <!-- VIDEO -->
+
                         <div class="form-group">
 
-                            <label for="{{ form.video.id_for_label }}">
+                            <label
+                                for="{{ form.video.id_for_label }}"
+                            >
                                 Project Video
                             </label>
 
+
+                            {% if project.video %}
+
+                                <div class="current-media">
+
+                                    <video
+                                        controls
+                                        preload="metadata"
+                                    >
+
+                                        <source
+                                            src="{{ project.video.url }}"
+                                        >
+
+                                        Your browser does not support
+                                        video playback.
+
+                                    </video>
+
+
+                                    <span>
+                                        Current video
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
                             {{ form.video }}
 
+
                             {% for error in form.video.errors %}
+
                                 <small class="form-error">
                                     {{ error }}
                                 </small>
+
                             {% endfor %}
 
                         </div>
@@ -367,7 +577,9 @@ Add Project | Oyewole Olamilekan Usman
 
 
 
-                <!-- FORM ERRORS -->
+                <!-- ==================================================
+                     FORM ERRORS
+                =================================================== -->
 
                 {% if form.non_field_errors %}
 
@@ -387,18 +599,24 @@ Add Project | Oyewole Olamilekan Usman
 
 
 
-                <!-- ACTIONS -->
+                <!-- ==================================================
+                     ACTIONS
+                =================================================== -->
 
                 <div class="project-form-actions">
 
+
                     <a
-                        href="{% url 'projects:home' %}"
+                        href="{% url 'projects:project_detail' project.pk %}"
                         class="admin-cancel-btn"
                     >
+
                         <i class="fa-solid fa-arrow-left"></i>
 
                         Cancel
+
                     </a>
+
 
 
                     <button
@@ -406,13 +624,14 @@ Add Project | Oyewole Olamilekan Usman
                         class="admin-submit-btn"
                     >
 
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
 
-                        Add Project
+                        Update Project
 
                     </button>
 
                 </div>
+
 
             </form>
 

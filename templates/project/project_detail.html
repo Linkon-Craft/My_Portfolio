@@ -1,11 +1,21 @@
-{% extends "base.html" %}
-
-{% load static %}
-
+{% extends 'base.html' %}
 
 {% block title %}
 {{ project.title }} | Oyewole Olamilekan Usman
 {% endblock %}
+
+{% block meta_description %}
+{{ project.description|truncatechars:155 }}
+{% endblock %}
+
+{% block og_title %}
+{{ project.title }} | Oyewole Olamilekan Usman
+{% endblock %}
+
+{% block og_description %}
+{{ project.description|truncatechars:200 }}
+{% endblock %}
+
 
 
 {% block content %}
@@ -122,6 +132,7 @@
                         controls
                         preload="metadata"
                         playsinline
+                        poster="{{ project.image.url }}
                     >
 
                         <source
@@ -383,6 +394,37 @@
                     {% endif %}
 
                 </div>
+
+                {% if user.is_staff %}
+
+                    <div class="project-admin-actions">
+
+                        <a
+                            href="{% url 'projects:update_project' project.pk %}"
+                            class="admin-edit-link"
+                        >
+
+                            <i class="fa-solid fa-pen-to-square"></i>
+
+                            Update Project
+
+                        </a>
+
+
+                        <a
+                            href="{% url 'projects:delete_project' project.pk %}"
+                            class="admin-delete-link"
+                        >
+
+                            <i class="fa-solid fa-trash-can"></i>
+
+                            Delete Project
+
+                        </a>
+
+                    </div>
+
+                {% endif %}
 
             </aside>
 

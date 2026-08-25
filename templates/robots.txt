@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /add_project/
+
+Sitemap: https://YOUR-DOMAIN.com/sitemap.xml
