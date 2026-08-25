@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django.contrib.sitemaps",
 
+
+
     # Local app
     'projects',
 ]
@@ -149,6 +151,8 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -170,7 +174,6 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 CONTACT_EMAIL = os.getenv("CONTACT_EMAIL")
-
 
 
 
