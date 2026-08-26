@@ -217,7 +217,7 @@ if not DEBUG:
 
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_PRELOAD = False
 
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -225,3 +225,24 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 X_FRAME_OPTIONS = "DENY"
+
+
+LOGGING = {
+    "version": 1,
+
+    "disable_existing_loggers": False,
+
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
+}

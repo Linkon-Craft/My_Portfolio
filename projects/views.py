@@ -5,6 +5,7 @@ from django.db.models import Avg, Count
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
+import logging
 from django.urls import reverse
 from django.contrib.admin.views.decorators import staff_member_required
 
@@ -116,13 +117,16 @@ def services(request):
     return render(request, "project/services.html")
 
 
+logger = logging.getLogger(__name__)
+
+
 def contact(request):
 
     if request.method == "POST":
 
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        message = request.POST.get("message", "").strip()
 
         subject = f"Portfolio Contact from {name}"
 
@@ -139,10 +143,10 @@ Message:
         try:
 
             send_mail(
-                subject,
-                body,
-                settings.DEFAULT_FROM_EMAIL,
-                [settings.CONTACT_EMAIL],
+                subject=subject,
+                message=body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.CONTACT_EMAIL],
                 fail_silently=False,
             )
 
@@ -151,14 +155,16 @@ Message:
                 "Your message has been sent successfully."
             )
 
-        except Exception as e:
+        except Exception:
 
-            print("EMAIL ERROR:", e)
+            logger.exception(
+                "Portfolio contact email failed."
+            )
 
             messages.error(
                 request,
                 "Sorry, your message could not be sent "
-                "right now. Please try again."
+                "right now. Please try again later."
             )
 
         return redirect(
@@ -168,6 +174,7 @@ Message:
     return redirect(
         f"{reverse('projects:home')}#contact"
     )
+
 
 
 @staff_member_required
