@@ -15,6 +15,8 @@ from .forms import ProjectForm, ReviewForm, ContactForm
 
 
 
+logger = logging.getLogger(__name__)
+
 def home(request):
     all_projects = Project.objects.all()
     contact_form = ContactForm()
@@ -117,20 +119,33 @@ def services(request):
     return render(request, "project/services.html")
 
 
-logger = logging.getLogger(__name__)
-
 
 def contact(request):
 
-    if request.method == "POST":
+    if request.method != "POST":
+        return redirect(
+            f"{reverse('projects:home')}#contact"
+        )
 
-        name = request.POST.get("name", "").strip()
-        email = request.POST.get("email", "").strip()
-        message = request.POST.get("message", "").strip()
+    name = request.POST.get("name", "").strip()
+    email = request.POST.get("email", "").strip()
+    message = request.POST.get("message", "").strip()
 
-        subject = f"Portfolio Contact from {name}"
+    # Basic validation
+    if not name or not email or not message:
 
-        body = f"""
+        messages.error(
+            request,
+            "Please complete all required fields."
+        )
+
+        return redirect(
+            f"{reverse('projects:home')}#contact"
+        )
+
+    subject = f"Portfolio Contact from {name}"
+
+    body = f"""
 Name: {name}
 
 Email: {email}
@@ -140,41 +155,36 @@ Message:
 {message}
 """
 
-        try:
+    try:
 
-            send_mail(
-                subject=subject,
-                message=body,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.CONTACT_EMAIL],
-                fail_silently=False,
-            )
+        send_mail(
+            subject=subject,
+            message=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.CONTACT_EMAIL],
+            fail_silently=False,
+        )
 
-            messages.success(
-                request,
-                "Your message has been sent successfully."
-            )
+        messages.success(
+            request,
+            "Your message has been sent successfully."
+        )
 
-        except Exception:
+    except Exception:
 
-            logger.exception(
-                "Portfolio contact email failed."
-            )
+        logger.exception(
+            "Portfolio contact email failed."
+        )
 
-            messages.error(
-                request,
-                "Sorry, your message could not be sent "
-                "right now. Please try again later."
-            )
-
-        return redirect(
-            f"{reverse('projects:home')}#contact"
+        messages.error(
+            request,
+            "Sorry, your message could not be sent "
+            "right now. Please try again later."
         )
 
     return redirect(
         f"{reverse('projects:home')}#contact"
     )
-
 
 
 @staff_member_required
