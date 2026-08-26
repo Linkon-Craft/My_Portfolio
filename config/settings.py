@@ -167,38 +167,60 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+
+SUPABASE_S3_ACCESS_KEY = os.getenv(
+    "SUPABASE_S3_ACCESS_KEY"
+)
+
+SUPABASE_S3_SECRET_KEY = os.getenv(
+    "SUPABASE_S3_SECRET_KEY"
+)
+
+SUPABASE_BUCKET = os.getenv(
+    "SUPABASE_BUCKET",
+    "project-media"
+)
+
+
 STORAGES = {
+
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "storages.backends.s3.S3Storage",
     },
+
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND":
+            "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
+
 }
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AWS_ACCESS_KEY_ID = SUPABASE_S3_ACCESS_KEY
 
+AWS_SECRET_ACCESS_KEY = SUPABASE_S3_SECRET_KEY
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+AWS_STORAGE_BUCKET_NAME = SUPABASE_BUCKET
 
-EMAIL_HOST = "smtp.gmail.com"
+AWS_S3_ENDPOINT_URL = (
+    f"{SUPABASE_URL}/storage/v1/s3"
+)
 
-EMAIL_PORT = 465
+AWS_S3_REGION_NAME = "us-east-1"
 
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = False
+AWS_S3_SIGNATURE_VERSION = "s3v4"
 
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+AWS_DEFAULT_ACL = None
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+AWS_QUERYSTRING_AUTH = False
 
-CONTACT_EMAIL = os.getenv("CONTACT_EMAIL")
+AWS_S3_FILE_OVERWRITE = False
 
-
+AWS_S3_CUSTOM_DOMAIN = (
+    f"{SUPABASE_URL.replace('https://', '')}"
+    f"/storage/v1/object/public/{SUPABASE_BUCKET}"
+)
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https',)
 # =========================================================
