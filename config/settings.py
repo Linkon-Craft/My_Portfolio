@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
     host.strip()
     for host in os.getenv(
         "ALLOWED_HOSTS",
-        "127.0.0.1,localhost"
+        "my-portfolio-ilj2.onrender.com"
     ).split(",")
     if host.strip()
 ]
@@ -100,6 +100,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+
 
 DATABASES = {
     "default": dj_database_url.config(
@@ -107,6 +110,13 @@ DATABASES = {
         conn_max_age=600,
     )
 }
+
+if DATABASE_URL:
+    DATABASES["default"] = dj_database_url.parse(
+        DATABASE_URL,
+        conn_max_age=600,
+        ssl_require=True,
+    )
 
 
 if not DEBUG and os.getenv("DATABASE_URL"):
