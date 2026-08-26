@@ -105,9 +105,15 @@ DATABASES = {
     "default": dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
-        ssl_require=not DEBUG,
     )
 }
+
+
+if not DEBUG and os.getenv("DATABASE_URL"):
+
+    DATABASES["default"]["OPTIONS"] = {
+        "sslmode": "require"
+    }
 
 
 # Password validation
@@ -176,7 +182,12 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CONTACT_EMAIL = os.getenv("CONTACT_EMAIL")
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://my-portfolio-ilj2.onrender.com',
+]
 
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # =========================================================
 # PRODUCTION SECURITY
 # =========================================================
