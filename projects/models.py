@@ -2,10 +2,10 @@ from django.db import models
 
 
 class Category(models.TextChoices):
-    DATA_ANALYTICS = "DT_ANALYTICS", "Data_Analytics"
-    MACHINE_LEARNING = "MCHINE_LEARNIN", "Machine_Learning"
-    DJANGO = "DJNGO", "Django"
-
+    
+    DATA_ANALYTICS = "DT_ANALYTICS", "Data Analytics"
+    MACHINE_LEARNING = "MACHINE_LEARNING", "Machine Learning"
+    DJANGO = "DJANGO", "Django"
 
 
 

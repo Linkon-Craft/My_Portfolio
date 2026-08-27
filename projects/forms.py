@@ -70,9 +70,9 @@ class ProjectForm(forms.ModelForm):
                 }
             ),
 
-            "category": forms.TextInput(
+            "category": forms.Select(
                 attrs={
-                    "placeholder": "e.g. Data Analytics"
+                    "class": "form-select"
                 }
             ),
 
