@@ -85,14 +85,51 @@ def project_detail(request, pk):
 
 @staff_member_required
 def add_project(request):
-    form = ProjectForm()
+
     if request.method == "POST":
-        form = ProjectForm(request.POST, request.FILES)
+
+        form = ProjectForm(
+            request.POST,
+            request.FILES
+        )
+
+        print("FORM VALID:", form.is_valid())
 
         if form.is_valid():
-            form.save()
-            return redirect('projects:home')
-    return render(request, 'project/add_project.html', {"form":form})  
+
+            project = form.save()
+
+            print(
+                "PROJECT SAVED:",
+                project.id,
+                project.title
+            )
+
+            messages.success(
+                request,
+                "Project added successfully."
+            )
+
+            return redirect("projects:home")
+
+        else:
+
+            print(
+                "FORM ERRORS:",
+                form.errors
+            )
+
+    else:
+
+        form = ProjectForm()
+
+    return render(
+        request,
+        "project/add_project.html",
+        {"form": form}
+    )
+
+ 
 
 
 @staff_member_required
