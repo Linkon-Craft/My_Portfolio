@@ -106,7 +106,10 @@ def update_project(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Project updated Successfully")
-            return redirect('projects:home')
+            return redirect(
+                        f"{reverse('projects:home')}#projects"
+                    )
+        
     context = {
         'form':form,
         'project':project
