@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.http import HttpResponse
 from django.db.models import Avg, Count
-from django.core.mail import EmailMessage
+import resend
 from django.contrib import messages
 from django.conf import settings
 import logging
@@ -119,33 +119,17 @@ def services(request):
     return render(request, "project/services.html")
 
 
-
 def contact(request):
 
-    if request.method != "POST":
-        return redirect(
-            f"{reverse('projects:home')}#contact"
-        )
+    if request.method == "POST":
 
-    name = request.POST.get("name", "").strip()
-    email = request.POST.get("email", "").strip()
-    message = request.POST.get("message", "").strip()
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
 
-    # Basic validation
-    if not name or not email or not message:
+        subject = f"Portfolio Contact from {name}"
 
-        messages.error(
-            request,
-            "Please complete all required fields."
-        )
-
-        return redirect(
-            f"{reverse('projects:home')}#contact"
-        )
-
-    subject = f"Portfolio Contact from {name}"
-
-    body = f"""
+        body = f"""
 Name: {name}
 
 Email: {email}
@@ -155,36 +139,41 @@ Message:
 {message}
 """
 
-    try:
+        try:
 
-        send_mail(
-            subject=subject,
-            message=body,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.CONTACT_EMAIL],
-            fail_silently=False,
-        )
+            resend.api_key = settings.RESEND_API_KEY
 
-        messages.success(
-            request,
-            "Your message has been sent successfully."
-        )
+            resend.Emails.send({
+                "from": "onboarding@resend.dev",
+                "to": [settings.CONTACT_EMAIL],
+                "subject": subject,
+                "text": body,
+                "reply_to": email,
+            })
 
-    except Exception:
+            messages.success(
+                request,
+                "Your message has been sent successfully."
+            )
 
-        logger.exception(
-            "Portfolio contact email failed."
-        )
+        except Exception as e:
 
-        messages.error(
-            request,
-            "Sorry, your message could not be sent "
-            "right now. Please try again later."
+            print("RESEND EMAIL ERROR:", repr(e))
+
+            messages.error(
+                request,
+                "Sorry, your message could not be sent "
+                "right now. Please try again later."
+            )
+
+        return redirect(
+            f"{reverse('projects:home')}#contact"
         )
 
     return redirect(
         f"{reverse('projects:home')}#contact"
     )
+
 
 
 @staff_member_required
