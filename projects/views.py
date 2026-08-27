@@ -98,7 +98,6 @@ def add_project(request):
 @staff_member_required
 def update_project(request, pk):
     project = get_object_or_404(Project, pk=pk)
-    form = ProjectForm(instance=project)
 
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES, instance=project)
