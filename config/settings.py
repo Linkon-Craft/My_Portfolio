@@ -186,7 +186,7 @@ SUPABASE_BUCKET = os.getenv(
 STORAGES = {
 
     "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
+        "BACKEND": "projects.storage.SupabaseStorage",
     },
 
     "staticfiles": {
@@ -216,11 +216,6 @@ AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
 
 AWS_S3_FILE_OVERWRITE = False
-
-AWS_S3_CUSTOM_DOMAIN = (
-    f"{SUPABASE_URL.replace('https://', '')}"
-    f"/storage/v1/object/public/{SUPABASE_BUCKET}"
-)
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https',)
 # =========================================================
