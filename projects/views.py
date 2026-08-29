@@ -129,7 +129,7 @@ def add_project(request):
         {"form": form}
     )
 
- 
+
 
 
 @staff_member_required
@@ -168,7 +168,7 @@ def contact(request):
         email = request.POST.get("email")
         message = request.POST.get("message")
 
-        subject = f"Portfolio Contact from {name}"
+        subject = request.POST.get("subject")
 
         body = f"""
 Name: {name}
