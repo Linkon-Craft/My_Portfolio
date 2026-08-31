@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-Page Not Found | Oyewole Olamilekan Usman
+Something Went Wrong | Oyewole Olamilekan Usman
 {% endblock %}
 
 {% block meta_description %}
-The page you are looking for could not be found. Return to the portfolio homepage.
+Something went wrong while loading this page. Please return to the portfolio homepage.
 {% endblock %}
-
 
 {% block content %}
 
@@ -15,45 +14,31 @@ The page you are looking for could not be found. Return to the portfolio homepag
 
     <div class="error-content">
 
-        <!-- Error Number -->
-
         <div class="error-number">
 
-            <span>4</span>
+            <span>5</span>
 
             <div class="error-icon">
-                <i class="fa-solid fa-compass"></i>
+                <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
 
-            <span>4</span>
+            <span>0</span>
 
         </div>
 
-
-        <!-- Label -->
-
         <span class="section-label">
-            PAGE NOT FOUND
+            SERVER ERROR
         </span>
 
-
-        <!-- Heading -->
-
         <h1>
-            Looks Like You Took
-            <span>A Wrong Turn.</span>
+            Something Went
+            <span>Wrong.</span>
         </h1>
 
-
-        <!-- Description -->
-
         <p>
-            The page you're looking for doesn't exist,
-            may have been moved, or the link might be incorrect.
+            We're sorry, but something went wrong while processing
+            your request. Please try again or return to the homepage.
         </p>
-
-
-        <!-- Actions -->
 
         <div class="error-actions">
 
@@ -62,17 +47,14 @@ The page you are looking for could not be found. Return to the portfolio homepag
                 class="error-primary"
             >
                 <i class="fa-solid fa-house"></i>
-
                 Back to Home
             </a>
-
 
             <a
                 href="{% url 'projects:home' %}#projects"
                 class="error-secondary"
             >
                 View Projects
-
                 <i class="fa-solid fa-arrow-right"></i>
             </a>
 
